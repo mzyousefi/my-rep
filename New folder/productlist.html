@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <title>product list</title>
+        <link rel="stylesheet" href="css/bootstrap.css" />
+        <link rel="stylesheet" href="css/animate.css" />
+        <link rel="stylesheet" href="css/aos.css" />
+        <link rel="stylesheet" href="fontawesome/all.css" />
+        <link rel="stylesheet" href="css/owl.carousel.min.css" />
+        <link rel="stylesheet" href="css/owl.theme.default.min.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+        <link rel="stylesheet" href="style.css" />
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js"></script>
+    </head>
+
+    <body>
+        <div class="modal fade" id="sort-modal">
+            <div class="modal-dialog modal-xl">
+                <div class="modal-content">
+                    <div class="modal-header d-flex justify-content-between">
+                        <h5 class="modal-title text-muted">مرتب سازی بر اساس:</h5>
+                        <button type="button" class="close m-0 p-0" data-dismiss="modal">&times;</button>
+                    </div>
+                    <div class="modal-body sorting sorting-res text-right">
+                        <a href="#" class="mt-2 px-3 py-2 bg-light text-muted">پیشنهادات ویژه</a>
+                        <a href="#" class="mr-3 mt-2 px-3 py-2 bg-light text-muted">پربازده ترین محصولات</a>
+                        <a href="#" class="mr-3 mt-2 px-3 py-2 bg-light text-muted">جدیدترین محصولات</a>
+                        <a href="#" class="mr-3 mt-2 px-3 py-2 bg-light text-muted">قیمت صعودی</a>
+                        <a href="#" class="mr-3 mt-2 px-3 py-2 bg-light text-muted">قیمت نزولی</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="filter-modal">
+            <div class="modal-dialog modal-xl">
+                <div class="modal-content">
+                    <div class="modal-header d-flex justify-content-between">
+                        <h5 class="modal-title text-muted">فیلترها:</h5>
+                        <button type="button" class="close m-0 p-0" data-dismiss="modal">&times;</button>
+                    </div>
+                    <div class="modal-body sorting sorting-res text-right">
+                        <div class="filter-box">
+                            <a href="#" class="just-availble-btn special-effect d-block w-100 mb-3 py-2 text-center text-white">فقط کالاهای موجود</a>
+                            <div class="range-box bg-light px-3 pt-2 pb-3">
+                                <h5 class="text-right">بازه قیمت بر حسب تومان</h5>
+                                <div dir="ltr" class="range-slider w-100 mt-2 pb-4">
+                                    <span class="rangeValues"></span>
+                                    <input value="500" min="500" max="50000" step="500" type="range">
+                                    <input value="50000" min="500" max="50000" step="500" type="range">
+                                </div>   
+                                <a href="#" class="submit-range d-block w-100 mt-2 py-1 text-center">اعمال فیلتر</a>     
+                            </div>
+                            <div class="active-filters mt-3 px-3 pt-2 pb-3 bg-light text-right">
+                                <h5>فیلترهای اعمال شده</h5>
+                                <p class="mt-2 px-3 py-2"><a href="#" class="fal fa-close ml-2"></a>شلوار</p>
+                                <p class="mt-2 px-3 py-2"><a href="#" class="fal fa-close ml-2"></a>کاپشن</p>
+                                <p class="mt-2 px-3 py-2"><a href="#" class="fal fa-close ml-2"></a>تیشرت</p>
+                            </div>
+                            <div class="product-filters mt-3 px-3 pt-2 pb-3 bg-light text-right">
+                                <h5>فیلتر محصولات</h5>
+                                <a href="#" class="mt-2 px-3 py-2">شلوار</a>
+                                <a href="#" class="mt-2 px-3 py-2">کاپشن</a>
+                                <a href="#" class="mt-2 px-3 py-2">تیشرت</a>
+                            </div>
+                        </div>
+                        </div>
+                </div>
+            </div>
+        </div>
+        <header class="web-header-section py-3">
+            <nav class="navbar navbar-expand-lg navbar-dark">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fal fa-bars"></i>
+                </button>
+
+                <a class="navbar-brand" href="#"><img src="image/logo.png" alt="logo" class="w-100 h-100" /></a>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                کالای دیجیتال
+                                <i class="fal fa-angle-down"></i>
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <span class="text-uppercase">لوازم جانبی گوشی</span>
+                                            <ul class="nav flex-sm-column">
+                                                <li class="nav-item">
+                                                    <a class="nav-link active" href="#">کیف و کاور گوشی</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" href="#">محتوای لیست شماره یک</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" href="#">محتوای لیست شماره یک</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" href="#">محتوای لیست شماره یک</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" href="#">محتوای لیست شماره یک</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" href="#">محتوای لیست شماره یک</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" href="#">محتوای لیست شماره یک</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <!-- /.col-md-3  -->
+                                        <div class="col-md-3">
+                                            <span class="text-uppercase">گوشی موبایل</span>
+                                            <ul class="nav flex-sm-column">
+                                                <li class="nav-item">
+                                                    <a class="nav-link active" href="#">محتوای لیست شماره یک</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" href="#">محتوای لیست شماره یک</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" href="#">محتوای لیست شماره یک</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <!-- /.col-md-3  -->
+                                        <div class="col-md-3">
+                                            <span class="text-uppercase">گوشی موبایل</span>
+                                            <ul class="nav flex-sm-column">
+                                                <li class="nav-item">
+                                                    <a class="nav-link active" href="#">محتوای لیست شماره یک</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" href="#">محتوای لیست شماره یک</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" href="#">محتوای لیست شماره یک</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <!-- /.col-md-3  -->
+                                        <div class="col-md-3 text-left">
+                                            <a href="#" class="category-img-container">
+                                                <img src="image/home/menu/Lemonad_6090.png" alt="" class="category-img img-fluid" />
+                                            </a>
+                                        </div>
+                                        <!-- /.col-md-3  -->
+                                    </div>
+                                </div>
+                                <!--  /.container  -->
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                آرایشی بهداشتی و سلامت
+                                <i class="fal fa-angle-down"></i>
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <span class="text-uppercase">لوازم بهداشتی</span>
+                                            <ul class="nav flex-sm-column">
+                                                <li class="nav-item">
+                                                    <a class="nav-link active" href="#">محتوای لیست شماره یک</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" href="#">محتوای لیست شماره یک</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" href="#">محتوای لیست شماره یک</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" href="#">محتوای لیست شماره یک</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <!-- /.col-md-3  -->
+                                        <div class="col-md-3">
+                                            <span class="text-uppercase">لوازم آرایشی</span>
+                                            <ul class="nav flex-sm-column">
+                                                <li class="nav-item">
+                                                    <a class="nav-link active" href="#">محتوای لیست شماره یک</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" href="#">محتوای لیست شماره یک</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" href="#">محتوای لیست شماره یک</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <!-- /.col-md-3  -->
+                                        <div class="col-md-3">
+                                            <span class="text-uppercase">لوازم آرایشی</span>
+                                            <ul class="nav flex-sm-column">
+                                                <li class="nav-item">
+                                                    <a class="nav-link active" href="#">محتوای لیست شماره یک</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" href="#">محتوای لیست شماره یک</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" href="#">محتوای لیست شماره یک</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <!-- /.col-md-3  -->
+                                        <div class="col-md-3 text-left">
+                                            <a href="#" class="category-img-container">
+                                                <img src="image/home/menu/Lemonad_6090.png" alt="" class="category-img img-fluid" />
+                                            </a>
+                                        </div>
+                                        <!-- /.col-md-3  -->
+                                    </div>
+                                </div>
+                                <!--  /.container  -->
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                مد پوشاک ورزشی
+                                <i class="fal fa-angle-down"></i>
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <span class="text-uppercase">لباس مردانه</span>
+                                            <ul class="nav flex-sm-column">
+                                                <li class="nav-item">
+                                                    <a class="nav-link active" href="#">محتوای لیست شماره یک</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" href="#">محتوای لیست شماره یک</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" href="#">محتوای لیست شماره یک</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" href="#">محتوای لیست شماره یک</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <!-- /.col-md-3  -->
+                                        <div class="col-md-3">
+                                            <span class="text-uppercase">لباس زنانه</span>
+                                            <ul class="nav flex-sm-column">
+                                                <li class="nav-item">
+                                                    <a class="nav-link active" href="#">محتوای لیست شماره یک</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" href="#">محتوای لیست شماره یک</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" href="#">محتوای لیست شماره یک</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <!-- /.col-md-3  -->
+                                        <div class="col-md-3">
+                                            <span class="text-uppercase">لباس زنانه</span>
+                                            <ul class="nav flex-sm-column">
+                                                <li class="nav-item">
+                                                    <a class="nav-link active" href="#">محتوای لیست شماره یک</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" href="#">محتوای لیست شماره یک</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" href="#">محتوای لیست شماره یک</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <!-- /.col-md-3  -->
+                                        <div class="col-md-3 text-left">
+                                            <a href="#" class="category-img-container">
+                                                <img src="image/home/menu/Lemonad_6090.png" alt="" class="category-img img-fluid" />
+                                            </a>
+                                        </div>
+                                        <!-- /.col-md-3  -->
+                                    </div>
+                                </div>
+                                <!--  /.container  -->
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                خانه و آشپزخانه
+                                <i class="fal fa-angle-down"></i>
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <span class="text-uppercase">صوتی و تصویری</span>
+                                            <ul class="nav flex-sm-column">
+                                                <li class="nav-item">
+                                                    <a class="nav-link active" href="#">محتوای لیست شماره یک</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" href="#">محتوای لیست شماره یک</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" href="#">محتوای لیست شماره یک</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" href="#">محتوای لیست شماره یک</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <!-- /.col-md-3  -->
+                                        <div class="col-md-3">
+                                            <span class="text-uppercase">دکوراتیو</span>
+                                            <ul class="nav flex-sm-column">
+                                                <li class="nav-item">
+                                                    <a class="nav-link active" href="#">محتوای لیست شماره یک</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" href="#">محتوای لیست شماره یک</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" href="#">محتوای لیست شماره یک</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <!-- /.col-md-3  -->
+                                        <div class="col-md-3">
+                                            <span class="text-uppercase">دکوراتیو</span>
+                                            <ul class="nav flex-sm-column">
+                                                <li class="nav-item">
+                                                    <a class="nav-link active" href="#">محتوای لیست شماره یک</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" href="#">محتوای لیست شماره یک</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" href="#">محتوای لیست شماره یک</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <!-- /.col-md-3  -->
+                                        <div class="col-md-3 text-left">
+                                            <a href="#" class="category-img-container">
+                                                <img src="image/home/menu/Lemonad_6090.png" alt="" class="category-img img-fluid" />
+                                            </a>
+                                        </div>
+                                        <!-- /.col-md-3  -->
+                                    </div>
+                                </div>
+                                <!--  /.container  -->
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="left-box d-flex">
+                    <form action="" class="searchbox pt-1">
+                        <button><i class="fal fa-search"></i></button>
+                        <input type="search" placeholder="جستجو" />
+                    </form>
+                    <div class="res-fix">
+                        <a href="#" class="fal fa-user"></a>
+                        <a href="#" class="fal fa-shopping-cart"></a>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <div class="clearfix"></div>
+        <section id="plp-main-container" class="container-fluid mb-5">
+            <div class="row">
+                <div class="col-12 col-lg-3">
+                    <aside class="filter-box d-none d-lg-block">
+                        <a href="#" class="just-availble-btn special-effect d-block w-100 mb-3 py-2 text-center">فقط کالاهای موجود</a>
+                        <div class="range-box bg-light px-3 pt-2 pb-3">
+                            <h5 class="text-right">بازه قیمت بر حسب تومان</h5>
+                            <div dir="ltr" class="range-slider w-100 mt-2 pb-4">
+                                <span class="rangeValues"></span>
+                                <input value="500" min="500" max="50000" step="500" type="range">
+                                <input value="50000" min="500" max="50000" step="500" type="range">
+                            </div>   
+                            <a href="#" class="submit-range d-block w-100 mt-2 py-1 text-center">اعمال فیلتر</a>     
+                        </div>
+                        <div class="active-filters mt-3 px-3 pt-2 pb-3 bg-light text-right">
+                            <h5>فیلترهای اعمال شده</h5>
+                            <p class="mt-2 px-3 py-2"><a href="#" class="fal fa-close ml-2"></a>شلوار</p>
+                            <p class="mt-2 px-3 py-2"><a href="#" class="fal fa-close ml-2"></a>کاپشن</p>
+                            <p class="mt-2 px-3 py-2"><a href="#" class="fal fa-close ml-2"></a>تیشرت</p>
+                        </div>
+                        <div class="product-filters mt-3 px-3 pt-2 pb-3 bg-light text-right">
+                            <h5>فیلتر محصولات</h5>
+                            <a href="#" class="mt-2 px-3 py-2">شلوار</a>
+                            <a href="#" class="mt-2 px-3 py-2">کاپشن</a>
+                            <a href="#" class="mt-2 px-3 py-2">تیشرت</a>
+                        </div>
+                    </aside>
+                </div>
+                <div class="product-main-content col-12 col-lg-9">
+                    <ul class="breadcrumb bg-light">
+                        <li class="breadcrumb-item"><a href="#" class="text-dark">صفحه اصلی</a></li>
+                        <li class="breadcrumb-item"><a href="#" class="text-muted mr-2">بر اساس برند</a></li>
+                    </ul>
+                    <ul class="sorting d-none d-lg-flex bg-light p-3">
+                        <li class="text-dark"><i class="fal fa-align-right ml-2"></i>مرتب سازی بر اساس:</li>
+                        <li class="mr-3"><a href="#" class="text-muted">پیشنهادات ویژه</a></li>
+                        <li class="mr-3"><a href="#" class="text-muted">پربازده ترین محصولات</a></li>
+                        <li class="mr-3"><a href="#" class="text-muted">جدیدترین محصولات</a></li>
+                        <li class="mr-3"><a href="#" class="text-muted">قیمت صعودی</a></li>
+                        <li class="mr-3"><a href="#" class="text-muted">قیمت نزولی</a></li>
+                    </ul>   
+                    <ul class="res-nav sorting d-flex d-lg-none bg-light p-3">
+                        <li>
+                            <a href="#" class="text-muted" data-toggle="modal" data-target="#sort-modal">
+                                <i class="fal fa-align-right ml-2 font-weight-bold"></i>
+                                مرتب سازی بر اساس:
+                            </a>
+                        </li>
+                        <li class="mr-3">
+                            <a href="#" class="text-muted" data-toggle="modal" data-target="#filter-modal">
+                                <i class="fal fa-sort-shapes-down ml-2 font-weight-bold"></i>
+                                فیلترها
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="row d-none d-md-flex my-3">
+                        <div class="col-12 col-sm-6 col-md-4 col-xl-3">
+                            <div class="product-item w-100 h-auto mb-5">
+                                <div class="p-item-img-top">
+                                    <a href="#"><img class="main-img" src="image/home/offer/model_1_bg.jpg" alt="product" /></a>
+                                </div>
+                                <div class="product-caption position-relative w-100 h-auto">
+                                    <a class="off-persent position-absolute"><span>OFF 20%</span></a>
+                                    <div class="caption-content w-100 h-auto my-2 pt-3">
+                                        <h5 class="text-center mt-3">لورم ایپسوم نام محصول</h5>
+                                        <p class="pt-1 pb-2 px-4 text-center">
+                                            لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.
+                                        </p>
+                                        <div class="price-box position-relative py-2">
+                                            <h5 class="position-relative text-center"><span>30000</span><span class="mr-2">تومان</span></h5>
+                                            <h4 class="position-absolute text-center"><span>20000</span><span class="mr-2">تومان</span></h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>    
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-4 col-xl-3">
+                            <div class="product-item w-100 h-auto mb-5">
+                                <div class="p-item-img-top">
+                                    <a href="#"><img class="main-img" src="image/home/offer/model_1_bg.jpg" alt="product" /></a>
+                                </div>
+                                <div class="product-caption position-relative w-100 h-auto">
+                                    <a class="off-persent position-absolute"><span>OFF 20%</span></a>
+                                    <div class="caption-content w-100 h-auto my-2 pt-3">
+                                        <h5 class="text-center mt-3">لورم ایپسوم نام محصول</h5>
+                                        <p class="pt-1 pb-2 px-4 text-center">
+                                            لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.
+                                        </p>
+                                        <div class="price-box position-relative py-2">
+                                            <h4 class="position-absolute text-center"><span>20000</span><span class="mr-2">تومان</span></h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>    
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-4 col-xl-3">
+                            <div class="product-item w-100 h-auto mb-5">
+                                <div class="p-item-img-top">
+                                    <a href="#"><img class="main-img" src="image/home/offer/model_1_bg.jpg" alt="product" /></a>
+                                </div>
+                                <div class="product-caption position-relative w-100 h-auto">
+                                    <a class="off-persent position-absolute"><span>OFF 20%</span></a>
+                                    <div class="caption-content w-100 h-auto my-2 pt-3">
+                                        <h5 class="text-center mt-3">لورم ایپسوم نام محصول</h5>
+                                        <p class="pt-1 pb-2 px-4 text-center">
+                                            لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.
+                                        </p>
+                                        <div class="price-box position-relative py-2">
+                                            <h5 class="position-relative text-center"><span>30000</span><span class="mr-2">تومان</span></h5>
+                                            <h4 class="position-absolute text-center"><span>20000</span><span class="mr-2">تومان</span></h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>    
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-4 col-xl-3">
+                            <div class="product-item w-100 h-auto mb-5">
+                                <div class="p-item-img-top">
+                                    <a href="#"><img class="main-img" src="image/home/offer/model_1_bg.jpg" alt="product" /></a>
+                                </div>
+                                <div class="product-caption position-relative w-100 h-auto">
+                                    <a class="off-persent position-absolute"><span>OFF 20%</span></a>
+                                    <div class="caption-content w-100 h-auto my-2 pt-3">
+                                        <h5 class="text-center mt-3">لورم ایپسوم نام محصول</h5>
+                                        <p class="pt-1 pb-2 px-4 text-center">
+                                            لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.
+                                        </p>
+                                        <div class="price-box position-relative py-2">
+                                            <h4 class="position-absolute text-center"><span>20000</span><span class="mr-2">تومان</span></h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>    
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-4 col-xl-3">
+                            <div class="product-item w-100 h-auto mb-5">
+                                <div class="p-item-img-top">
+                                    <a href="#"><img class="main-img" src="image/home/offer/model_1_bg.jpg" alt="product" /></a>
+                                </div>
+                                <div class="product-caption position-relative w-100 h-auto">
+                                    <a class="off-persent position-absolute"><span>OFF 20%</span></a>
+                                    <div class="caption-content w-100 h-auto my-2 pt-3">
+                                        <h5 class="text-center mt-3">لورم ایپسوم نام محصول</h5>
+                                        <p class="pt-1 pb-2 px-4 text-center">
+                                            لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.
+                                        </p>
+                                        <div class="price-box position-relative py-2">
+                                            <h5 class="position-relative text-center"><span>30000</span><span class="mr-2">تومان</span></h5>
+                                            <h4 class="position-absolute text-center"><span>20000</span><span class="mr-2">تومان</span></h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>    
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-4 col-xl-3">
+                            <div class="product-item w-100 h-auto mb-5">
+                                <div class="p-item-img-top">
+                                    <a href="#"><img class="main-img" src="image/home/offer/model_1_bg.jpg" alt="product" /></a>
+                                </div>
+                                <div class="product-caption position-relative w-100 h-auto">
+                                    <a class="off-persent position-absolute"><span>OFF 20%</span></a>
+                                    <div class="caption-content w-100 h-auto my-2 pt-3">
+                                        <h5 class="text-center mt-3">لورم ایپسوم نام محصول</h5>
+                                        <p class="pt-1 pb-2 px-4 text-center">
+                                            لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.
+                                        </p>
+                                        <div class="price-box position-relative py-2">
+                                            <h4 class="position-absolute text-center"><span>20000</span><span class="mr-2">تومان</span></h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>    
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-4 col-xl-3">
+                            <div class="product-item w-100 h-auto mb-5">
+                                <div class="p-item-img-top">
+                                    <a href="#"><img class="main-img" src="image/home/offer/model_1_bg.jpg" alt="product" /></a>
+                                </div>
+                                <div class="product-caption position-relative w-100 h-auto">
+                                    <a class="off-persent position-absolute"><span>OFF 20%</span></a>
+                                    <div class="caption-content w-100 h-auto my-2 pt-3">
+                                        <h5 class="text-center mt-3">لورم ایپسوم نام محصول</h5>
+                                        <p class="pt-1 pb-2 px-4 text-center">
+                                            لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.
+                                        </p>
+                                        <div class="price-box position-relative py-2">
+                                            <h5 class="position-relative text-center"><span>30000</span><span class="mr-2">تومان</span></h5>
+                                            <h4 class="position-absolute text-center"><span>20000</span><span class="mr-2">تومان</span></h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>    
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-4 col-xl-3">
+                            <div class="product-item w-100 h-auto mb-5">
+                                <div class="p-item-img-top">
+                                    <a href="#"><img class="main-img" src="image/home/offer/model_1_bg.jpg" alt="product" /></a>
+                                </div>
+                                <div class="product-caption position-relative w-100 h-auto">
+                                    <a class="off-persent position-absolute"><span>OFF 20%</span></a>
+                                    <div class="caption-content w-100 h-auto my-2 pt-3">
+                                        <h5 class="text-center mt-3">لورم ایپسوم نام محصول</h5>
+                                        <p class="pt-1 pb-2 px-4 text-center">
+                                            لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.
+                                        </p>
+                                        <div class="price-box position-relative py-2">
+                                            <h4 class="position-absolute text-center"><span>20000</span><span class="mr-2">تومان</span></h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>    
+                        </div>
+                    </div>
+                    <div class="row d-md-none my-3">
+                        <div class="col-12">
+                            <div class="product-item row w-100 h-auto mb-5">
+                                <div class="col-12 col-sm-4">
+                                    <div class="p-item-img-top">
+                                        <a href="#"><img class="main-img" src="image/home/offer/model_1_bg.jpg" alt="product" /></a>
+                                    </div>    
+                                </div>
+                                <div class="product-caption col-12 col-sm-8 position-relative w-100 h-auto">
+                                    <a class="off-persent position-absolute top-0"><span>OFF 20%</span></a>
+                                    <div class="caption-content w-100 h-auto text-center text-sm-right">
+                                        <h5 class="mt-3 mt-sm-0">لورم ایپسوم نام محصول</h5>
+                                        <p class="d-none d-sm-block mt-4 pb-2">
+                                            لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.
+                                            لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.
+                                            لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.
+                                        </p>
+                                        <div class="price-box position-relative mt-4 mt-sm-0 py-2">
+                                            <h5 class="position-relative"><span>30000</span><span class="mr-2">تومان</span></h5>
+                                            <h4 class="position-absolute"><span>20000</span><span class="mr-2">تومان</span></h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>    
+                        </div>
+                        <div class="col-12">
+                            <div class="product-item row w-100 h-auto mb-5">
+                                <div class="col-12 col-sm-4">
+                                    <div class="p-item-img-top">
+                                        <a href="#"><img class="main-img" src="image/home/offer/model_1_bg.jpg" alt="product" /></a>
+                                    </div>    
+                                </div>
+                                <div class="product-caption col-12 col-sm-8 position-relative w-100 h-auto">
+                                    <a class="off-persent position-absolute top-0"><span>OFF 20%</span></a>
+                                    <div class="caption-content w-100 h-auto text-center text-sm-right">
+                                        <h5 class="mt-3 mt-sm-0">لورم ایپسوم نام محصول</h5>
+                                        <p class="d-none d-sm-block mt-4 pb-2">
+                                            لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.
+                                            لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.
+                                            لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.
+                                        </p>
+                                        <div class="price-box position-relative mt-4 mt-sm-0 py-2">
+                                            <h5 class="position-relative"><span>30000</span><span class="mr-2">تومان</span></h5>
+                                            <h4 class="position-absolute"><span>20000</span><span class="mr-2">تومان</span></h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>    
+                        </div>
+                        <div class="col-12">
+                            <div class="product-item row w-100 h-auto mb-5">
+                                <div class="col-12 col-sm-4">
+                                    <div class="p-item-img-top">
+                                        <a href="#"><img class="main-img" src="image/home/offer/model_1_bg.jpg" alt="product" /></a>
+                                    </div>    
+                                </div>
+                                <div class="product-caption col-12 col-sm-8 position-relative w-100 h-auto">
+                                    <a class="off-persent position-absolute top-0"><span>OFF 20%</span></a>
+                                    <div class="caption-content w-100 h-auto text-center text-sm-right">
+                                        <h5 class="mt-3 mt-sm-0">لورم ایپسوم نام محصول</h5>
+                                        <p class="d-none d-sm-block mt-4 pb-2">
+                                            لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.
+                                            لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.
+                                            لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.
+                                        </p>
+                                        <div class="price-box position-relative mt-4 mt-sm-0 py-2">
+                                            <h5 class="position-relative"><span>30000</span><span class="mr-2">تومان</span></h5>
+                                            <h4 class="position-absolute"><span>20000</span><span class="mr-2">تومان</span></h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>    
+                        </div>
+                    </div>
+                    <ul class="pagination justify-content-center">
+                        <li class="page-item"><a href="#" class="page-link fal fa-angle-right"></a></li>
+                        <li class="page-item active"><a href="#" class="page-link">1</a></li>
+                        <li class="page-item"><a href="#" class="page-link">2</a></li>
+                        <li class="page-item"><a href="#" class="page-link">3</a></li>
+                        <li class="page-item"><a href="#" class="page-link fal fa-angle-left"></a></li>
+                    </ul>            
+                </div>
+            </div>
+        </section>
+        <div class="clearfix"></div>
+        <footer class="site-footer bg-dark">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 col-lg-8">
+                        <div class="row">
+                            <div class="col-lg-5">
+                                <h2 class="footer-heading mb-4">درباره ما</h2>
+                                <p>
+                                    لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و
+                                    کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد.
+                                </p>
+                            </div>
+                            <div class="col-lg-3 mt-4 mt-lg-0">
+                                <h2 class="footer-heading mb-4">لینک های مفید</h2>
+                                <ul class="list-unstyled">
+                                    <li><a href="#">درباره ما</a></li>
+                                    <li><a href="#">ارتباط با ما</a></li>
+                                    <li><a href="#">مقالات</a></li>
+                                    <li><a href="#">قوانین و مقررات</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-lg-4 mt-4 mt-lg-0">
+                                <h2 class="footer-heading mb-4">لیموناد در شبکه های اجتماعی</h2>
+                                <a href="#" class="pr-0 pl-3"><span class="fa fa-facebook"></span></a>
+                                <a href="#" class="pr-3 pl-3"><span class="fa fa-twitter"></span></a>
+                                <a href="#" class="pr-3 pl-3"><span class="fa fa-instagram"></span></a>
+                                <a href="#" class="pr-3 pl-3"><span class="fa fa-linkedin"></span></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4 mt-4 mt-md-0 ml-auto">
+                        <h2 class="footer-heading mb-4">از تخفیف ها و جدیدترین های لیموناد با خبر شوید</h2>
+                        <form action="post" class="d-flex">
+                            <input type="email" />
+                            <input class="px-3" type="submit" value="ثبت نام" />
+                        </form>
+                    </div>
+                </div>
+                <div class="row pt-5 mt-5 text-center">
+                    <div class="col-md-12">
+                        <div class="border-top pt-5">
+                            <p>
+                                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                                Copyright &copy;
+                                <script>
+                                    document.write(new Date().getFullYear());
+                                </script>
+                                All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Lemonad</a>
+                                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <div class="clearfix"></div>
+        <div class="web-scroll-section">
+            <i class="fal fa-arrow-up"></i>
+        </div>
+
+        <script src="js/bootstrap.bundle.js"></script>
+        <script src="js/jquery.fancybox.min.js"></script>
+        <script src="js/animatescroll.min.js"></script>
+        <script src="js/aos.js"></script>
+        <script src="js/owl.carousel.min.js"></script>
+        <script src="main.js"></script>
+        <script type="text/javascript" src="js/loadImg.js"></script>
+        <script type="text/javascript">
+            $(function () {
+                $("img").imgPreload();
+            });
+        </script>
+        <script>
+            AOS.init();
+        </script>
+    </body>
+</html>
